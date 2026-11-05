@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "fichiers": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-filesystem", "/chemin/vers/un/dossier"]
+    },
+    "distant": {
+      "url": "https://exemple.com/mcp",
+      "headers": { "Authorization": "Bearer ton-token" }
+    }
+  }
+}

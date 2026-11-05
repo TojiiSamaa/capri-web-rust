@@ -1,0 +1,146 @@
+# Capri keeps API keys and private chats on this machine. Nothing below may ever reach the repository.
+# A rule here only stops untracked files: if a secret was committed once, revoke it, it stays in the history.
+
+# ── Secrets ─────────────────────────────────────────────
+# Environment files; only the empty template is shared.
+.env
+.env.*
+!.env.example
+# MCP servers, with their tokens in clear; only the example is shared.
+mcp.json
+mcp.*.json
+!mcp.example.json
+# Keys, certificates and credentials, whatever the tool.
+*.pem
+*.key
+*.crt
+*.cer
+*.der
+*.p12
+*.pfx
+*.jks
+*.keystore
+*.ppk
+*.gpg
+*.asc
+*.secret
+*.secrets
+id_rsa*
+id_dsa*
+id_ecdsa*
+id_ed25519*
+secret.json
+secret.y*ml
+secret.toml
+secrets.json
+secrets.y*ml
+secrets.toml
+credentials
+credentials.json
+credentials.y*ml
+credentials.toml
+service-account*.json
+.npmrc
+.yarnrc.yml
+.netrc
+.pypirc
+.git-credentials
+.htpasswd
+.aws/
+.ssh/
+.gnupg/
+.azure/
+.gcloud/
+
+# ── Personal data ───────────────────────────────────────
+# data/capri.db holds settings, keys and every chat.
+data/
+*.db
+*.db-*
+*.sqlite
+*.sqlite3
+*.sqlite-*
+*.sqlite3-*
+# Raw browser copy made on migration, with keys in clear.
+localStorage-*.json
+# Dumps and backups of any of the above.
+*.dump
+*.sql
+*.bak
+*.backup
+*.old
+*.orig
+*.rej
+backup/
+backups/
+# Generated speech and recordings.
+*.wav
+*.mp3
+*.m4a
+*.ogg
+*.flac
+
+# ── Dependencies and builds ─────────────────────────────
+node_modules/
+.pnp
+.pnp.*
+.yarn/
+.next/
+out/
+build/
+dist/
+coverage/
+.nyc_output/
+.turbo/
+.swc/
+.vercel/
+.netlify/
+*.tsbuildinfo
+next-env.d.ts
+
+# ── Logs and temporary files ────────────────────────────
+logs/
+*.log
+*.log.*
+*.pid
+*.seed
+tmp/
+temp/
+.tmp/
+.cache/
+*.tmp
+*.temp
+
+# ── Operating systems ───────────────────────────────────
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+.Spotlight-V100/
+.Trashes
+.fseventsd/
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+desktop.ini
+$RECYCLE.BIN/
+.directory
+.Trash-*
+
+# ── Editors and AI assistants ───────────────────────────
+.idea/
+.vscode/
+.fleet/
+.zed/
+*.swp
+*.swo
+*.sublime-workspace
+*~
+\#*\#
+.claude/
+CLAUDE.local.md
+.cursor/
+.aider*
+.continue/
+.windsurf/
+graphify-out/
