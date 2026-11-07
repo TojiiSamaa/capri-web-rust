@@ -22,6 +22,7 @@ const CLIPS = {
   dangle: [24, 10], sleep: [16, 6], wake: [13, 15], mouth: [5, 12], walk: [12, 12],
 } as const;
 type Clip = keyof typeof CLIPS;
+const EAGER: Clip[] = ["idle", "blink", "mouth", "walk"];
 const FILE: Partial<Record<Clip, string>> = { walk: "walk.png" };
 
 const ASPECT = 5 / 8;
@@ -483,11 +484,16 @@ export default function Capri() {
     const still = matchMedia("(prefers-reduced-motion: reduce)");
     const loaded = new Set<Clip>();
     const strips = {} as Record<Clip, HTMLImageElement>;
-    for (const name of Object.keys(CLIPS) as Clip[]) {
+    const load = (name: Clip) => {
       strips[name] = new Image();
       strips[name].src = `/sprites/${FILE[name] ?? `${name}.webp`}`;
       strips[name].decode().then(() => loaded.add(name)).catch(() => {});
-    }
+    };
+    // She can already idle, blink, talk and walk; the longer clips follow once the first paint is done (play() falls back to idle until then).
+    const names = Object.keys(CLIPS) as Clip[];
+    const urgent = names.filter((name) => EAGER.includes(name));
+    urgent.forEach(load);
+    const later = setTimeout(() => names.filter((name) => !urgent.includes(name)).forEach(load), 1500);
 
     const height = () => SIZE_PX[cfg.current.size];
     const width = () => height() * ASPECT;
@@ -740,6 +746,7 @@ export default function Capri() {
 
     return () => {
       cancelAnimationFrame(raf);
+      clearTimeout(later);
       events.forEach((type) => document.removeEventListener(type, wake));
       api.current = null;
     };
