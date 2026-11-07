@@ -69,7 +69,7 @@ test("a chat from the old format moves to the messages table once, in a real fil
     assert.deepEqual(s.read().history, [{ role: "user", content: "vieux" }, { role: "assistant", content: "message" }]);
     s.close();
   }
-  assert.equal(statSync(path).mode & 0o777, 0o600);
+  if (process.platform !== "win32") assert.equal(statSync(path).mode & 0o777, 0o600); // Windows has no POSIX modes
   rmSync(dir, { recursive: true });
 });
 
