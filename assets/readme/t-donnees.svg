@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="64" viewBox="0 0 900 64" role="img" aria-label="TES DONNÉES"><title>TES DONNÉES</title><style>@media (prefers-reduced-motion:reduce){*{animation:none!important}}</style>
+<rect x="0" y="12" width="52" height="40" fill="#ff5d66"/>
+<text x="26" y="40" text-anchor="middle" font-family="Consolas,'DejaVu Sans Mono',Menlo,monospace" font-weight="700" font-size="20" fill="#0a0a10">03</text>
+<text x="68" y="44" font-family="'Arial Black','Segoe UI Black','Helvetica Neue',Arial,sans-serif" font-weight="900" font-style="italic" font-size="28" letter-spacing="2" fill="#ff5d66">TES DONNÉES</text>
+<line x1="330" y1="32" x2="810" y2="32" stroke="#2c2030" stroke-width="2"/>
+<rect x="802" y="28" width="8" height="8" fill="#3cff8a"/>
+<text x="900" y="42" text-anchor="end" font-family="'Hiragino Sans','Yu Gothic','Noto Sans CJK JP','Noto Sans JP','Microsoft YaHei',sans-serif" font-size="22" fill="#92828c">データ</text></svg>

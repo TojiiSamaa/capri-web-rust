@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="130" viewBox="0 0 900 130" role="img" aria-label="CAPRI WEB, WAKE UP, CHOOM."><title>CAPRI WEB, WAKE UP, CHOOM.</title><style>@media (prefers-reduced-motion:reduce){*{animation:none!important}}</style>
+<defs><pattern id="fh" width="10" height="10" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="10" stroke="#140f19" stroke-width="3"/></pattern></defs>
+<rect width="900" height="130" rx="6" fill="#0a0a10"/><rect width="900" height="130" rx="6" fill="url(#fh)"/>
+<rect x="0" y="20" width="10" height="90" fill="#ff5d66"/>
+<rect x="34" y="20" width="90" height="90" fill="#ff5d66"/>
+<text x="79" y="78" text-anchor="middle" font-family="'Hiragino Sans','Yu Gothic','Noto Sans CJK JP','Noto Sans JP','Microsoft YaHei',sans-serif" font-weight="700" font-size="26" fill="#0a0a10">カプリ</text>
+<text x="146" y="70" font-family="'Arial Black','Segoe UI Black','Helvetica Neue',Arial,sans-serif" font-weight="900" font-style="italic" font-size="44" fill="#ff5d66">CAPRI WEB</text>
+<line x1="148" y1="88" x2="866" y2="88" stroke="#5c1824" stroke-width="2"/>
+<rect x="148" y="100" width="10" height="10" fill="#3cff8a"/>
+<text x="166" y="110" font-family="Consolas,'DejaVu Sans Mono',Menlo,monospace" font-size="15" letter-spacing="1" fill="#92828c">WAKE UP, CHOOM.</text>
+<text x="866" y="110" text-anchor="end" font-family="Consolas,'DejaVu Sans Mono',Menlo,monospace" font-size="13" fill="#5c4c58">DA fan-made inspirée de Cyberpunk: Edgerunners 2</text></svg>
