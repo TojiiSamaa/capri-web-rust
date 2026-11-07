@@ -13,3 +13,16 @@ jobs:
       - run: npm run typecheck
       - run: npm test
       - run: npm run build
+  rust:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 24 }
+      - uses: dtolnay/rust-toolchain@stable
+        with: { targets: wasm32-unknown-unknown }
+      - run: npm ci
+      - run: npm run test:rust
+      # Rebuild the module, then check it against the TypeScript effects sample for sample.
+      - run: npm run build:wasm
+      - run: node --test lib/voicefxWasm.test.ts

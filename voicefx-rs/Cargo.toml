@@ -1,0 +1,17 @@
+[package]
+name = "voicefx"
+version = "0.1.0"
+edition = "2021"
+description = "Capri's voice effects (pitch, speed, robot, glitch, layers), ported from lib/voicefx.ts"
+license-file = "../LICENSE.md"
+publish = false
+
+[lib]
+crate-type = ["cdylib", "rlib"]
+
+[profile.release]
+opt-level = 3
+lto = true
+codegen-units = 1
+panic = "abort"
+strip = true

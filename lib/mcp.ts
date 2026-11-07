@@ -68,7 +68,7 @@ const state = (reload = false) => inTurn(() => refreshed(reload));
 
 // Reuses the connections until mcp.json changes, or until a reload is asked for.
 async function refreshed(reload: boolean): Promise<State> {
-  const stamp = await stat(CONFIG).then((s) => s.mtimeMs, () => 0);
+  const stamp = await stat(/*turbopackIgnore: true*/ CONFIG).then((s) => s.mtimeMs, () => 0);
   const current = shared.capriMcp;
   if (current && current.stamp === stamp && !reload) return current;
   if (current) (await current.servers).forEach((s) => s.client?.close().catch(() => {}));
@@ -76,7 +76,7 @@ async function refreshed(reload: boolean): Promise<State> {
   let entries: [string, Record<string, unknown>][] = [];
   if (stamp) {
     try {
-      entries = Object.entries(JSON.parse(await readFile(CONFIG, "utf8")).mcpServers ?? {});
+      entries = Object.entries(JSON.parse(await readFile(/*turbopackIgnore: true*/ CONFIG, "utf8")).mcpServers ?? {});
     } catch (e) {
       error = `mcp.json illisible : ${e instanceof Error ? e.message : e}`;
     }
@@ -107,7 +107,7 @@ export async function chatTools() {
 // Refuses to touch a file it can't read: rewriting it would lose whatever is in there.
 async function changeConfig(change: (config: Config) => Config | string) {
   return inTurn(async () => {
-    const raw = await readFile(CONFIG, "utf8").catch((e) => {
+    const raw = await readFile(/*turbopackIgnore: true*/ CONFIG, "utf8").catch((e) => {
       if (e.code === "ENOENT") return "{}";
       throw e;
     });

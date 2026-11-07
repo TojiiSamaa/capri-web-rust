@@ -11,6 +11,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
+    "build:wasm": "cargo build --release --target wasm32-unknown-unknown --manifest-path voicefx-rs/Cargo.toml --target-dir voicefx-rs/target && node -e \"require('fs').copyFileSync('voicefx-rs/target/wasm32-unknown-unknown/release/voicefx.wasm','public/voicefx.wasm')\"",
+    "test:rust": "cargo test --release --manifest-path voicefx-rs/Cargo.toml --target-dir voicefx-rs/target",
     "typecheck": "tsc --noEmit",
     "test": "node --test \"lib/*.test.ts\""
   },
