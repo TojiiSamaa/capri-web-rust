@@ -1,0 +1,17 @@
+# Never in the image: secrets, personal data and local builds.
+.env
+.env.*
+mcp.json
+mcp.*.json
+data/
+*.db
+*.sqlite*
+localStorage-*.json
+node_modules/
+.next/
+.git/
+.claude/
+*.tsbuildinfo
+next-env.d.ts
+*.log
+.DS_Store

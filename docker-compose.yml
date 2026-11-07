@@ -1,0 +1,18 @@
+# Serves Capri on 127.0.0.1:${PORT} (PORT from .env, 3000 by default).
+# Bound to this machine only: the API holds your keys, and it refuses any other host anyway.
+services:
+  capri:
+    build: .
+    ports:
+      - "127.0.0.1:${PORT:-3000}:3000"
+    env_file:
+      - path: .env
+        required: false
+    environment:
+      TZ: ${TZ:-Europe/Paris}
+    volumes:
+      - capri-data:/app/data
+    restart: unless-stopped
+
+volumes:
+  capri-data:

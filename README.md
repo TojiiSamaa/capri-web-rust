@@ -16,6 +16,15 @@ Le micro passe par la reconnaissance vocale du navigateur (Chrome, Edge ou Safar
 
 Il faut Node 22.18 ou plus récent. `npm test` lance tous les tests, sans réseau et sans toucher à tes données.
 
+## Avec Docker
+
+```bash
+cp .env.example .env
+docker compose up -d --build
+```
+
+L'app répond sur `http://localhost:PORT`, avec `PORT` pris dans `.env` (3000 par défaut). Elle n'écoute que sur cette machine : les routes `/api/*` refusent toute autre adresse. Sur un serveur distant, passe par un tunnel SSH (`ssh -L 3000:localhost:3000 serveur`). Les données vivent dans le volume `capri-data` ; `TZ` dans `.env` règle son heure (Europe/Paris par défaut).
+
 ## Données
 
 `data/capri.db` contient tout : pense à le sauvegarder, et ne le partage pas.

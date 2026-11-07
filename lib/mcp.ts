@@ -9,7 +9,7 @@ import type { Transport } from "@modelcontextprotocol/sdk/shared/transport.js";
 import { infosTransport } from "./infos.ts";
 import { type Config, INFOS_SERVER, INFOS_USE_CASE, type NewServer, safeName, shownUrl, withoutServer, withServer } from "./mcpConfig.ts";
 
-const CONFIG = join(process.cwd(), "mcp.json");
+const CONFIG = process.env.CAPRI_MCP_CONFIG || join(process.cwd(), "mcp.json"); // Docker keeps it in the data volume
 const CONNECT_TIMEOUT = 20_000;
 const CALL_TIMEOUT = 120_000;
 const MAX_RESULT = 16_000;
