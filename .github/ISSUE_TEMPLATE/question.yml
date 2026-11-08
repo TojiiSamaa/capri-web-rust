@@ -1,0 +1,29 @@
+# géré par profil-github (modeles-issues.mjs) : ne pas modifier à la main
+name: Question
+description: Demande d'aide ou d'information
+labels: ["question", "à trier"]
+body:
+  - type: textarea
+    id: question
+    attributes:
+      label: "Ta question"
+    validations:
+      required: true
+  - type: textarea
+    id: essaye
+    attributes:
+      label: "Ce que tu as déjà essayé"
+    validations:
+      required: false
+  - type: input
+    id: navigateur
+    attributes:
+      label: "Navigateur et version"
+    validations:
+      required: true
+  - type: input
+    id: page
+    attributes:
+      label: "Page ou adresse concernée"
+    validations:
+      required: false
