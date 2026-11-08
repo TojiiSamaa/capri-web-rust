@@ -1,0 +1,31 @@
+[package]
+name = "capri-server"
+version = "0.1.0"
+edition = "2021"
+license = "LicenseRef-PolyForm-Noncommercial-1.0.0"
+
+[dependencies]
+axum = "0.8"
+tokio = { version = "1", features = ["rt-multi-thread", "macros", "process", "io-util", "time", "net", "sync", "fs"] }
+tower-http = { version = "0.6", features = ["fs"] }
+reqwest = { version = "0.12", default-features = false, features = ["json", "rustls-tls", "stream"] }
+rusqlite = { version = "0.32", features = ["bundled"] }
+serde = "1"
+serde_json = { version = "1", features = ["preserve_order"] }
+chrono = "0.4"
+chrono-tz = "0.10"
+regex = "1"
+sha2 = "0.10"
+iana-time-zone = "0.1"
+url = "2"
+futures-util = "0.3"
+
+[dev-dependencies]
+tempfile = "3"
+tower = { version = "0.5", features = ["util"] }
+
+[profile.release]
+opt-level = 3
+lto = true
+codegen-units = 1
+strip = true

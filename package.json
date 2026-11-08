@@ -10,14 +10,15 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start",
+    "start": "cargo run --release --manifest-path server-rs/Cargo.toml --target-dir server-rs/target",
     "build:wasm": "cargo build --release --target wasm32-unknown-unknown --manifest-path voicefx-rs/Cargo.toml --target-dir voicefx-rs/target && node -e \"require('fs').copyFileSync('voicefx-rs/target/wasm32-unknown-unknown/release/voicefx.wasm','public/voicefx.wasm')\"",
     "test:rust": "cargo test --release --manifest-path voicefx-rs/Cargo.toml --target-dir voicefx-rs/target",
     "typecheck": "tsc --noEmit",
-    "test": "node --test \"lib/*.test.ts\""
+    "test": "node --test \"lib/*.test.ts\"",
+    "build:server": "cargo build --release --manifest-path server-rs/Cargo.toml --target-dir server-rs/target",
+    "test:server": "cargo test --manifest-path server-rs/Cargo.toml --target-dir server-rs/target"
   },
   "dependencies": {
-    "@modelcontextprotocol/sdk": "^1.32.2",
     "next": "^16.4.5",
     "react": "^19.3.1",
     "react-dom": "^19.3.1"

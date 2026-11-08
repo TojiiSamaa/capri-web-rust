@@ -13,6 +13,14 @@ jobs:
       - run: npm run typecheck
       - run: npm test
       - run: npm run build
+  server:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 24 } # one test starts a stdio MCP server with node
+      - uses: dtolnay/rust-toolchain@stable
+      - run: npm run test:server
   rust:
     runs-on: ubuntu-latest
     steps:

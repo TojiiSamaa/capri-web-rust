@@ -147,3 +147,6 @@ graphify-out/
 
 # Rust build output (the compiled public/voicefx.wasm is committed)
 voicefx-rs/target/
+
+# Rust build output of the server
+server-rs/target/

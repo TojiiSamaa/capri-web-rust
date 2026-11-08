@@ -5,13 +5,16 @@
 
 <img src="assets/readme/t-lancer.svg" alt="01 Lancer" width="100%">
 
-Il faut Node 22.18 ou plus récent.
+Il faut Node 22.18 ou plus récent et [Rust](https://rustup.rs/) (le serveur est écrit en Rust, la page en Next.js).
 
 ```bash
 npm install
 cp .env.example .env
-npm run dev
+npm run build   # exporte la page dans out/
+npm start       # compile et lance le serveur Rust : http://localhost:3000
 ```
+
+`npm run dev` ne lance que la page (rechargement à chaud) : ses appels `/api/*` n'aboutissent pas sans le serveur.
 
 Ouvre **Paramètres**, choisis ton fournisseur, colle ta clé et choisis un modèle. Tout fournisseur compatible OpenAI fonctionne, y compris Ollama ou un serveur local.
 
@@ -23,7 +26,9 @@ docker compose up -d --build
 
 Capri répond sur `http://localhost:PORT`, et seulement depuis cette machine : les routes `/api/*` refusent toute autre adresse, car elles tiennent tes clés et lancent des outils. Sur un serveur distant, passe par un tunnel SSH (`ssh -L 3000:localhost:3000 serveur`). Ses données vivent dans le volume `capri-data`, et `TZ` dans `.env` règle son heure (Europe/Paris par défaut).
 
-`npm test` lance tous les tests, sans réseau et sans toucher à tes données.
+`npm test` lance les tests de la page, `npm run test:server` ceux du serveur Rust, sans toucher à tes données.
+
+**Le serveur en Rust.** `server-rs/` (axum) remplace les routes Next : stockage SQLite, chat, outils MCP (client écrit à la main, stdio et HTTP), outils intégrés, quotas, voix. Les textes et réglages par défaut partagés avec la page sont dans `shared/` (un test vérifie que `shared/defaults.json` suit `DEFAULTS`). Variables : `PORT`, `HOSTNAME`, `CAPRI_DATA_DIR` (`./data`), `CAPRI_MCP_CONFIG` (`./mcp.json`), `CAPRI_STATIC_DIR` (`./out`).
 
 <img src="assets/readme/t-fonctions.svg" alt="02 Ce qu'elle fait" width="100%">
 
